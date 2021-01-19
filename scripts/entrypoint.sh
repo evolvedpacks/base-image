@@ -15,7 +15,7 @@ for ARG in $@; do
             COPY_SERVER_PROPERTIES=true
             ;;
         *)
-            ETC_ARGS+="$ARG "
+            ETC_ARGS="$ETC_ARGS $ARG"
         ;;
     esac
 done
