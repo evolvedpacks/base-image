@@ -1,0 +1,28 @@
+name: Docker CD
+
+on:
+  push:
+    branches:
+    - 'master'
+
+jobs:
+
+  build-image:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Repository Checkout
+      uses: actions/checkout@v2
+
+    - name: Docker Build
+      run: |
+        docker build . \
+          -t evolvedpacks/base:latest \
+          -f ./Dockerfile
+          
+    - name: Docker Push
+      run: |
+        docker login -u zekro -p ${{ secrets.DOCKER_PASSWORD }}
+        docker push evolvedpacks/base:latest
