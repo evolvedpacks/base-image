@@ -5,7 +5,7 @@ WORKDIR /build
 
 RUN apk add git
 RUN git clone https://github.com/evolvedpacks/healthcheck \
-        --branch master --depth 1 .
+    --branch master --depth 1 .
 RUN go mod download
 RUN go build -v -o healthcheck ./cmd/healthcheck/main.go
 
@@ -29,6 +29,7 @@ WORKDIR /var/server
 
 COPY ./scripts/entrypoint.sh ./entrypoint.sh
 COPY ./banner.txt ./_docker_data/default-banner.txt
+COPY ./log4bash-fix.xml ./log4bash-fix.xml
 
 EXPOSE 25565 25575
 

@@ -43,4 +43,7 @@ echo "| MODPACK VERSION:   $VERSION"
 printf "+-----------------------------------------------------------------\n\n\n"
 
 set -x
-java -jar -Xms${XMS} -Xmx${XMX} $ETC_ARGS ./forge.jar
+java -jar \
+    -Xms${XMS} -Xmx${XMX} \
+    -Dlog4j.configurationFile=log4bash-fix.xml \
+    $ETC_ARGS ./forge.jar
